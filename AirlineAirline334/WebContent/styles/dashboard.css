@@ -1,0 +1,26 @@
+.carousel-inner img{
+	height: 675px!important;
+    width: 100%;
+}
+.quoteAuthor{
+	text-align: right;
+	padding: 10px;
+}
+.carousel-caption{
+	background-color: rgba(0,0,0,0.5);
+}
+.carousel-control{
+	height:290px;
+	border: solid;
+	margin: 0px 20%;
+    width: 60%;
+}
+#bookingWrapper{
+	height:100%;
+	background-color: rgba(0,0,0,0.5); 
+	border: solid red;
+	
+}
+#myCarousel{
+	height: 675px;
+}

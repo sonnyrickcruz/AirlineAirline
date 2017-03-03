@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"  
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+ 	<definition name="baseLayout" template="/pages/templates/defaultLayout.jsp">
+ 		<put-attribute name="title" value="Base Layout"/>
+		<put-attribute name="header" value="/pages/fragments/header.jsp" />
+		<put-attribute name="body"/>
+		<put-attribute name="footer" value="/pages/fragments/footer.jsp"/>
+		<put-attribute name="plugins" value="/plugins/plugins.jsp"/>
+		<put-attribute name="customCSS" value="./styles/none.css"/>
+		<put-attribute name="customJS" value="./scripts/none.js"/>
+  	</definition>
+  	
+  	<definition name="bookingLayout" template="/pages/templates/bookingLayout.jsp">
+ 		<put-attribute name="title" value="Booking Layout"/>
+		<put-attribute name="header" value="/pages/fragments/header.jsp" />
+		<put-attribute name="bookingSteps" value="/pages/fragments/bookingSteps.jsp" />
+		<put-attribute name="body"/>
+		<put-attribute name="sidebar" value="/pages/fragments/sidebar.jsp"/>
+		<put-attribute name="footer" value="/pages/fragments/footer.jsp"/>
+		<put-attribute name="plugins" value="/plugins/plugins.jsp"/>
+		<put-attribute name="customCSS" value="./styles/none.css"/>
+		<put-attribute name="customJS" value="./scripts/none.js"/>
+  	</definition>
+  	
+  	<definition name="sample.page" extends="baseLayout">
+ 		<put-attribute name="title" value="Airline"/>
+		<put-attribute name="body" value="/pages/dashboard.jsp"/>
+		<put-attribute name="customCSS" value="./styles/dashboard.css"/>
+		<put-attribute name="customJS" value="./scripts/dashboard.js"/>
+  	</definition>
+  	
+  	<definition name="addFlights.page" extends="baseLayout">
+ 		<put-attribute name="title" value="Airline"/>
+		<put-attribute name="body" value="/pages/addFlights.jsp"/>
+		<put-attribute name="customCSS" value="./styles/searchFlights.css"/>
+		<put-attribute name="customJS" value="./scripts/addFlights.js"/>
+  	</definition>
+  	
+  	<definition name="login.page" extends="baseLayout">
+ 		<put-attribute name="title" value="Airline"/>
+ 		<put-attribute name="header" value="/pages/fragments/header.jsp"/>
+		<put-attribute name="body" value="/pages/dashboard.jsp"/>
+		<put-attribute name="customJS" value="./scripts/dashboard.js"/>
+		<put-attribute name="customCSS" value="./styles/dashboard.css"/>
+  	</definition>
+  	
+  	
+  	<definition name="error.page" extends="baseLayout">
+ 		<put-attribute name="title" value="Error"/>
+		<put-attribute name="body" value="/pages/error.jsp"/>
+  	</definition>
+  	
+  	<definition name="searchFlights.page" extends="baseLayout">
+ 		<put-attribute name="title" value="Search Flights"/>
+		<put-attribute name="body" value="/pages/searchFlights.jsp"/>
+		<put-attribute name="customJS" value="./scripts/searchFlights.js"/>
+		<put-attribute name="customCSS" value="./styles/searchFlights.css"/>
+  	</definition>
+  	
+  	<definition name="selectFlight.page" extends="baseLayout">
+ 		<put-attribute name="title" value="Select Flight"/>
+		<put-attribute name="body" value="/pages/selectFlight.jsp"/>
+		<put-attribute name="customJS" value="./scripts/selectFlight.js"/>
+		<put-attribute name="customCSS" value="./styles/selectFlight.css"/>
+  	</definition>
+  	
+  	<definition name="passengerDetails.page" extends="baseLayout">
+ 		<put-attribute name="title" value="Passenger Details"/>
+		<put-attribute name="body" value="/pages/passengerDetails.jsp"/>
+  	</definition>
+  	
+  	<definition name="myFlights.page" extends="baseLayout">
+ 		<put-attribute name="title" value="My Flights"/>
+		<put-attribute name="body" value="/pages/myFlights.jsp"/>
+		<put-attribute name="customJS" value="./scripts/searchFlights.js"/>
+  	</definition>
+  	
+  	<definition name="addons.page" extends="bookingLayout">
+  		<put-attribute name="title" value="Add ons"/>
+		<put-attribute name="body" value="/pages/addons.jsp"/>
+		<put-attribute name="customJS" value="./scripts/addons.js"/>
+		<put-attribute name="customCSS" value="./styles/addons.css"/> 
+  	</definition>
+  	<!-- <definition name="addons.page" extends="baseLayout">
+ 		<put-attribute name="title" value="Add ons"/>
+		<put-attribute name="body" value="/pages/addons.jsp"/>
+  	</definition> -->
+</tiles-definitions>

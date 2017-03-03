@@ -1,0 +1,9 @@
+.ui-helper-hidden-accessible{
+	z-index:2147483647;
+}
+.ui-autocomplete {
+  z-index:2147483647;
+}
+.ui-datepicker{
+z-index: 10000 !important;
+}

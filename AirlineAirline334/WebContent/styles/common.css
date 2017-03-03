@@ -1,0 +1,133 @@
+body{
+	position: relative;
+	margin: 0;
+	padding-bottom: 6rem;
+	min-height: 100vh;
+	overflow-y: scroll;
+}
+
+#header{
+	background: #7B2D26;
+	color: #fff
+}
+.headerText{
+	color:#fff;
+}
+#body{
+	background: #D7C9AA;
+}
+#logInFormWrapper{
+	padding-top:8px;
+	float: left;
+}
+
+#loginButton{
+	float: right;
+	margin:15px;
+}
+
+#loginWrapper{
+    width: 400px;
+    margin-top: -13%;
+    margin-right: 6%;
+}
+#userWrapper{
+    width: 400px;
+    margin-top: -4%;
+    margin-right: 6.2%;
+}
+
+#loginForm{
+	color: #000;
+	padding: 20px;
+}
+#lineColor{
+	height: 30px;
+    background: #204d74;
+    margin-top: -11px;
+    border-radius: 5px 0px 0px 0px;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+    border-right: solid 1px;
+    border-right-color: rgb(18, 43, 64);
+}
+#lineColorLogin{
+	height: 50px;
+    background: #204d74;
+    margin-top: -11px;
+    border-radius: 5px 5px 0px 0px;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+    border-right: solid 1px;
+    border-right-color: rgb(18, 43, 64);
+    text-align: center;
+}
+
+#userImage{
+	width: 30%;
+	margin: 10px ;
+	display: inline-block;
+}
+#userImage a{
+	height: 150px;
+	width: 150px;
+}
+#userInfo{
+	width: 200px;
+	margin: 10px ;
+	display: inline-block;
+}
+
+.center-myAccount{
+	margin: 0 auto;
+	width: 370px;
+}
+#myCarousel{
+	height: 500px;
+}
+.errorMessage{
+	color: red;
+	text-align: center;
+}
+
+
+/* FOOTER */
+.footer{
+	position: absolute;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+  	padding: 1rem;
+  	background-color: #efefef;
+  	text-align: center;
+}
+
+/* SIDEBAR */
+#sidebar{
+	border: solid red;
+}
+/* BOOKING STEPS*/
+#bookingSteps{
+	border: solid blue;
+    margin-bottom: 10px;
+}
+/* CONTAINER */
+.main-container{
+	padding: 10px 0px;
+}
+
+/*Date Picker*/
+.datepicker {
+	background-color: #fff ;
+	color: #333 ;
+}
+
+.hidden {
+	display: none;
+}
+
+.shown {
+	display: block;
+}
