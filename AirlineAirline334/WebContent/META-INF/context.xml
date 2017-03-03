@@ -10,7 +10,7 @@
         type="javax.sql.DataSource"
         maxActive="100" maxIdle="30" maxWait="10000"
         username="root" 
-        password="root" 
+        password=""
         driverClassName="com.mysql.jdbc.Driver"
         url="jdbc:mysql://localhost/aeropolis_db"/>
 </Context>

@@ -13,7 +13,7 @@ $(document).ready(function(){
 	});
 	$(document).on("blur", "#searchOrigin", function(){
 		origin = $(this).val();
-		exists = $.inArray(origin,autocompleteList);
+		var exists = $.inArray(origin,autocompleteList);
 		if(exists < 0) {
 			$(this).val("");
 			$("#searchDestination").val("");
@@ -21,8 +21,8 @@ $(document).ready(function(){
 		} 
 	});
 	$(document).on("blur", "#searchDestination", function(){
-		destination = $(this).val();
-		exists = $.inArray(destination,autocompleteList);
+		var destination = $(this).val();
+		var exists = $.inArray(destination,autocompleteList);
 		if(exists < 0) {
 			$(this).val("");
 			$("#searchOrigin").select();

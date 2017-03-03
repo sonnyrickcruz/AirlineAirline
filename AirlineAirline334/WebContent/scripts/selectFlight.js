@@ -1,8 +1,8 @@
 var selectedDate = new Date();
 var start = new Date();
 $(document).ready(function() {
-	//selectedDate = new Date($("#dateSelected").text());
-	selectedDate = new Date("Mon Nov 07 2016");
+	selectedDate = new Date($("#dateSelected").text());
+	//selectedDate = new Date("Mon Nov 07 2016");
 	initDate();
 	displayDates();
 	displayFlights();

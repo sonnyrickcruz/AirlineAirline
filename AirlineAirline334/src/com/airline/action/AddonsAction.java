@@ -46,7 +46,7 @@ public class AddonsAction extends BaseAction {
 			baggageList = addonsManager.retrieveBaggageList();
 			// this is a dummy data
 			//sa magtutuloy nito, iassign lang sa passengerList yung list ng passenger.(input po ito)
-			/*for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < 10; i++) {
 				PassengerBean passengers = new PassengerBean();
 				passengers.setFirstName("Test" + i);
 				passengers.setLastName("LastName" + i);
@@ -56,7 +56,7 @@ public class AddonsAction extends BaseAction {
 					passengers.setPrefix("Ms");
 				}
 				passengerList.add(passengers);
-			}*/
+			}
 			// -------------END OF DUMMY
 			// DATA------------------------------------
 
