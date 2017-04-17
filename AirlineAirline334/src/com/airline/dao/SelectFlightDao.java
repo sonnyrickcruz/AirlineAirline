@@ -54,9 +54,9 @@ public class SelectFlightDao extends BaseDao {
 				flight.setSeatingCapacity(rs.getInt("seating_capacity"));
 				flight.setNumberOfOccupiedSeats(rs.getInt("seats_left"));
 				if (rs.getString("remove_id") == null ) {
-					flight.setFlightStatus("Active");;
+					flight.setFlightStatus("Active");
 				} else {
-					flight.setFlightStatus("Cancelled");;
+					flight.setFlightStatus("Cancelled");
 				}
 				flightList.add(flight);
 			}

@@ -49,7 +49,7 @@ public class SelectFlightAction extends BaseAction {
 			flights = selectFlightsManager.retrieveFlightsByDateRouteId(departureDate, routeId);
 			log.info("There are " + flights.size() + " flights for routeId: " + routeId + " and departureDate: " + departureDate);
 		} catch (BusinessException | SystemException | ConnectionException e) {
-			e.printStackTrace();
+			log.error(e);
 		}
 		
 		log.debug("end action - result: " + result);
