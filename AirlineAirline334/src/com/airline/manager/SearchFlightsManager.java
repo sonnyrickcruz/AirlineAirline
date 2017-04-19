@@ -18,6 +18,8 @@ import com.airline.dao.SearchFlightsDao;
 import com.airline.exception.BusinessException;
 import com.airline.exception.ConnectionException;
 import com.airline.exception.SystemException;
+import com.airline.factory.OriginDestination;
+import com.airline.util.StringUtils;
 
 public class SearchFlightsManager {
 	private Logger log = Logger.getLogger(this.getClass());
@@ -64,22 +66,26 @@ public class SearchFlightsManager {
 	public List<String> processSearchOrginBySearchTerm(String term) throws BusinessException, SystemException, ConnectionException {
 		log.debug("start");
 
-		List<String> originList = null;
+		List<String> resultList = new ArrayList<>();
 
-		SearchFlightsDao searchFlightsDao = new SearchFlightsDao();
+		OriginDestination originDestination = OriginDestination.getInstance();
 		try {
-			originList = searchFlightsDao.retrieveOriginBySearchTerm(term);
-		} catch (ConnectionException e) {
-			throw e;
-		} catch (SystemException e) {
-			throw e;
+			List<String> originList = originDestination.getOrigins();
+			if (term.length() == 0) {
+				return resultList;
+			}
+			for (String string : originList) {
+				if (StringUtils.isInString(string, term)) {
+					resultList.add(string);
+				}
+			}
 		} catch (Exception e) {
 			log.error("There was an unknown error while processing origin list. " + e);
 			throw new BusinessException(e);
 		}
 
 		log.debug("end");
-		return originList;
+		return resultList;
 	}
 	
 	/**
