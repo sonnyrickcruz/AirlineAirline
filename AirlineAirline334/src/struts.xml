@@ -83,6 +83,12 @@
 			<result name="error" type="tiles">error.page</result>
 		</action>
 		
+		<action name="search-flights-routes" class="com.airline.action.SearchFlightsAction"
+			method="executeGetRouteList">
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/pages/json.jsp</result>
+		</action>
+		
 		<action name="select-flight" class="com.airline.action.SelectFlightAction"
 			method="execute">
 			<result name="input" type="tiles">selectFlight.page</result>

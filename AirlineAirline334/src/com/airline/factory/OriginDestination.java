@@ -139,4 +139,12 @@ public class OriginDestination {
 		}
 		return destinations;
 	}
+	
+	public List<RouteBean> getRoutes() {
+		if (isEmpty() && !isUpdated()) {
+			recreate();
+		}
+		
+		return routeListCache;
+	}
 }

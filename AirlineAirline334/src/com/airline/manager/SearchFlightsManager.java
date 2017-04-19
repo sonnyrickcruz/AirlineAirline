@@ -89,6 +89,31 @@ public class SearchFlightsManager {
 	}
 	
 	/**
+	 * 
+	 * @param term
+	 * @return resultList
+	 * @throws BusinessException
+	 * @throws SystemException
+	 * @throws ConnectionException
+	 */
+	public List<RouteBean> processRoutes() throws BusinessException, SystemException, ConnectionException {
+		log.debug("start");
+
+		List<RouteBean> resultList = new ArrayList<>();
+
+		OriginDestination originDestination = OriginDestination.getInstance();
+		try {
+			resultList = originDestination.getRoutes();
+		} catch (Exception e) {
+			log.error("There was an unknown error while processing origin list. " + e);
+			throw new BusinessException(e);
+		}
+
+		log.debug("end");
+		return resultList;
+	}
+	
+	/**
 	 * Processing the list of destination for searching flights
 	 * 
 	 * @return destinationList
