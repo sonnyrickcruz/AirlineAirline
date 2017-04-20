@@ -1,7 +1,5 @@
 package com.airline.action;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 
 import com.airline.bean.RouteBean;
@@ -14,8 +12,6 @@ import com.google.gson.Gson;
 
 public class SearchFlightsAction extends BaseAction {
 	private Logger log = Logger.getLogger(this.getClass());
-	private List<RouteBean> routeList;
-	private List<String> originList;
 	private String route;
 	private String message;
 	private String action;
@@ -148,22 +144,6 @@ public class SearchFlightsAction extends BaseAction {
 
 	public void setSearchDestination(String searchDestination) {
 		this.searchDestination = searchDestination;
-	}
-
-	public List<RouteBean> getRouteList() {
-		return routeList;
-	}
-
-	public void setRouteList(List<RouteBean> routeList) {
-		this.routeList = routeList;
-	}
-
-	public List<String> getOriginList() {
-		return originList;
-	}
-
-	public void setOriginList(List<String> originList) {
-		this.originList = originList;
 	}
 
 	public String getMessage() {

@@ -16,5 +16,8 @@
 
 *.bak
 
+web.xml
+context.xml
+
 classes/
 MANIFEST.MF
