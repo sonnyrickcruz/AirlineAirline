@@ -82,7 +82,7 @@ public class OriginDestination {
 	}
 
 	private void setDestinations() {
-		if (isEmpty() && !isUpdated()) {
+		if (isEmpty() || !isUpdated()) {
 			recreate();
 		}
 		try {
@@ -141,7 +141,7 @@ public class OriginDestination {
 	}
 	
 	public List<RouteBean> getRoutes() {
-		if (isEmpty() && !isUpdated()) {
+		if (isEmpty() || !isUpdated()) {
 			recreate();
 		}
 		

@@ -1,17 +1,34 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <div>
-	<form action="">
 	<s:if test="%{flights.size > 0}">
-		<s:iterator var="flight" value="flights">
-			${flight}
-			<!-- FlightBean [flightStatus=null, flightId=639, route=null, airplaneId=123, departureDate=2016-11-04, departureTime=09:00:00, arrivalDate=2016-11-04, arrivalTime=10:30:00] -->
-			<span>${flight.departureTime}</span> -> <span>${flight.arrivalTime}</span>
-			<span>Price ${sessionScope.ticket.flight.route.price}</span>
-			<br/>
-		</s:iterator>
+		<form action="">
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Departure</th>
+						<th>Arrival</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+				<tbody>
+					<s:iterator var="flight" value="flights">
+						<tr>
+							<td>
+								<div class="radio">
+									<label><input type="radio" name="optradio">Option 2</label>
+								</div>
+							</td>
+							<td>${flight.departureTime}</td>
+							<td>${flight.arrivalTime}</td>
+							<td>${sessionScope.ticket.flight.route.price}</td>
+						</tr>
+					</s:iterator>
+				</tbody>
+			</table>
+		</form>
 	</s:if>
 	<s:else>
 		No flight in this date
 	</s:else>
-	</form>
 </div>

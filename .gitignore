@@ -1,0 +1,23 @@
+# Intellij
+.idea/
+*.iml
+*.iws
+*.ipr
+
+*.class
+
+#Eclipse
+.classpath
+.project
+.settings
+
+# Git merge temp files
+*.orig
+
+*.bak
+
+web.xml
+context.xml
+
+classes/
+MANIFEST.MF

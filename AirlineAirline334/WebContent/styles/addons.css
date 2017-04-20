@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #addons {
 	padding: 5px;
 }
@@ -82,3 +83,84 @@ th {
 .nano .nano-content { padding: 10px; }
 .nano .nano-pane   { background: #888; }
 .nano .nano-slider { background: #111; }
+=======
+#addons {
+	padding: 5px;
+}
+
+.mealFrame, .mealFrameMenu {
+	cursor: pointer;
+	width: 304;
+	height: 236;
+}
+.panel {
+	height: 350px;
+	text-align: justify;
+}
+.panel-user{
+	height: 340px;
+	text-align: justify;
+}
+.panel-heading {
+	height: 55px;
+	text-align: center;
+}
+
+.table {
+	text-align: center;
+}
+
+th {
+	text-align: center;
+}
+
+.btn-info.active, .btn-info:active {
+	background-color: #17508c;
+	border-color: #28a4c9;
+}
+
+.btn-group{
+	overflow: hidden;
+}
+
+.btn-group input{
+	display: none;
+}
+
+.btn-group label{
+	display: inline-block;
+}
+
+.btn-info.active.focus, .btn-info.active:focus, .btn-info.active:hover,
+	.btn-info:active.focus, .btn-info:active:focus, .btn-info:active:hover,
+	.open>.dropdown-toggle.btn-info.focus, .open>.dropdown-toggle.btn-info:focus,
+	.open>.dropdown-toggle.btn-info:hover {
+	color: #fff;
+	background-color: #17508c;
+	border-color: #1b6d85;
+}
+[id^='passengerMealName']{
+	text-align: center;
+	padding: 10px;
+}
+.reminder{
+	color: red;
+	font-style: italic;
+}
+
+#insuranceButtonModal{	
+	margin: 0 31%;
+}
+#baggageButtonModal{
+	margin: 0% 14%;
+}
+.footer-message{
+	text-align: left;
+}
+.footer-message h5{
+	font-weight: bold;
+}
+.modal-header h4{
+	text-align: center;
+}
+>>>>>>> 7f7d04c2102d815f0a60183ead9573ed7e041b64

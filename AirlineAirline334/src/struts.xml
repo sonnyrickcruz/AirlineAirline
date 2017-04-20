@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC
    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
@@ -139,4 +140,147 @@
 			<result name="input" type="tiles">addFlights.page</result>
 		</action>
 	</package>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+   "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.devMode" value="true" />
+	<package name="default" namespace="/" extends="tiles-default,json-default">
+
+		<interceptors>
+			<interceptor name="templateInterceptor" class="com.airline.interceptor.TemplateInterceptor"/>
+			<interceptor name="accessInterceptor" class="com.airline.interceptor.AccessInterceptor"/>
+			<interceptor name="customerInterceptor" class="com.airline.interceptor.CustomerInterceptor"/>
+			<interceptor name="employeeInterceptor" class="com.airline.interceptor.EmployeeInterceptor"/>
+			<interceptor-stack name="jsonStack">
+		    	<interceptor-ref name="json">
+                	<param name="enableSMD">true</param>
+            	</interceptor-ref>
+          	</interceptor-stack>
+		</interceptors>
+
+		<action name="sample" class="com.airline.action.TemplateAction"
+			method="execute">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="templateInterceptor"/>
+			<result name="input" type="tiles">sample.page</result>
+			<result name="error" type="tiles">error.page</result>
+		</action>
+
+		<action name="sampleAction" class="com.airline.action.TemplateAction"
+			method="executeAction">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="templateInterceptor"/>
+			<result name="input" type="tiles">sample.page</result>
+			<result name="error" type="tiles">error.page</result>
+		</action>
+		
+		<action name="aircraftAction" class="com.airline.action.AircraftAction"
+			method="execute">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="templateInterceptor"/>
+			<result name="input" type="tiles">sample.page</result>
+		</action>
+		
+		<action name="LoginAction" class="com.airline.action.LoginAction"
+			method="execute">
+			<result name="success" type="tiles">login.page</result>
+			<result name="error" type="tiles">sample.page</result>
+		</action>
+		<action name="LoginActionJson" class="com.airline.action.LoginAction"
+			method="executeLogin">
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/pages/json.jsp</result>
+		</action>
+		
+		<action name="logout" class="com.airline.action.LogOutAction"
+			method="execute">
+			<result name="success" type="tiles">sample.page</result>
+			<result name="error" type="tiles">sample.page</result>
+		</action>
+		
+		<action name="my-flights" class="com.airline.action.MyFlightsAction"
+			method="execute">
+			<result name="input" type="tiles">myFlights.page</result>
+			<result name="error" type="tiles">error.page</result>
+		</action>
+		<action name="search-my-flights" class="com.airline.action.SearchMyFlightsAction"
+			method="execute">
+			<result name="success">/pages/searchMyFlightsSnippet.jsp</result>
+		</action>
+		
+		<action name="search-flights" class="com.airline.action.SearchFlightsAction"
+			method="execute">
+			<result name="input" type="tiles">searchFlights.page</result>
+			<result name="error" type="tiles">error.page</result>
+		</action>
+		
+		<action name="search-flights-autocomplete" class="com.airline.action.SearchFlightsAction"
+			method="executeAutocompleteAction">
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/pages/json.jsp</result>
+		</action>
+		
+		<action name="search-flights-submit" class="com.airline.action.SearchFlightsAction"
+			method="executeSubmitAction">
+			<result name="submit" type="redirect">
+				<param name="location">select-flight</param>
+			</result>
+			<result name="error" type="tiles">error.page</result>
+		</action>
+		
+		<action name="search-flights-routes" class="com.airline.action.SearchFlightsAction"
+			method="executeGetRouteList">
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/pages/json.jsp</result>
+		</action>
+		
+		<action name="select-flight" class="com.airline.action.SelectFlightAction"
+			method="execute">
+			<result name="input" type="tiles">selectFlight.page</result>
+			<result name="error" type="tiles">error.page</result>
+		</action>
+		
+		<action name="select-flight-snippet" class="com.airline.action.SelectFlightAction"
+			method="executeSnippet">
+			<result name="success">/pages/snippets/selectFlightSnippet.jsp</result>
+		</action>
+		
+		<action name="add-ons" class="com.airline.action.AddonsAction"
+			method="execute">
+			<result name="success" type="tiles">addons.page</result>
+		</action>
+		
+		<action name="add-flights" class="com.airline.action.AirportAction"
+			method="execute">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="templateInterceptor"/>
+			<result name="input" type="tiles">addFlights.page</result>
+		</action>
+		
+		<action name="add-flights-autocomplete" class="com.airline.action.AirportAction"
+			method="executeAutocomplete">
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/pages/json.jsp</result>
+		</action>
+		<action name="select-airplane-autocomplete" class="com.airline.action.AircraftAction"
+			method="executeAutocomplete">
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/pages/json.jsp</result>
+		</action>
+		<action name="search-route" class="com.airline.action.RouteAction"
+			method="execute">
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/pages/json.jsp</result>
+		</action>
+		<action name="create-flight" class="com.airline.action.FlightAction"
+			method="execute">
+			<interceptor-ref name="defaultStack" />
+			<result name="input" type="tiles">addFlights.page</result>
+		</action>
+	</package>
+>>>>>>> 7f7d04c2102d815f0a60183ead9573ed7e041b64
 </struts>
