@@ -54,7 +54,7 @@ $(document).ready(function(){
 		});
 	$("#submitAddons").on('click',function(){
 			var addOns =[];
-
+			var counter=0;
 			while($('#passengerBaggage'+counter).length != 0){
 				var baggageChoice = $('#passengerBaggage'+counter).children().children('.active').find('input:radio').attr("value");
 				var insuranceChoice = $('#passengerInsurance'+counter).children().children('.active').find('input:radio').attr("value");
@@ -64,7 +64,7 @@ $(document).ready(function(){
 					baggage: baggageChoice,
 					insurance: insuranceChoice
 				})
-				
+				counter++;
 			}
 			
 			passAddonsInputs(addOns);
@@ -116,4 +116,40 @@ $(document).ready(function(){
 			}
 		});
 	}
+	
+	//Scroll to fixed
+	 $('#bookingSteps').scrollToFixed({
+         marginTop: $('#header').outerHeight(true) + 10,
+	 });
+	 $('#header').scrollToFixed();
+
+
+     // Dock the footer to the bottom of the page, but scroll up to reveal more
+     // content if the page is scrolled far enough.
+
+     /*$('.footer').scrollToFixed( {
+         bottom: 0,
+         limit: $('.footer').offset().top
+     });*/
+	 var summaries = $('#sidebar');
+	 
+     summaries.each(function(i) {
+         var summary = $(summaries[i]);
+         var next = summaries[i + 1];
+
+         summary.scrollToFixed({
+             marginTop: $('#header').outerHeight(true) + 10,
+             /*limit: function() {
+                 var limit = 0;
+                 if (next) {
+                     limit = $(next).offset().top - $(this).outerHeight(true) - 10;
+                 } else {
+                     limit = $('.footer').offset().top - $(this).outerHeight(true) - 10;
+                 }
+                 return limit;
+             },*/
+             zIndex: 999
+         });
+     });
+	
 });

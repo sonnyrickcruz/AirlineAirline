@@ -56,6 +56,7 @@ th {
 [id^='passengerMealName']{
 	text-align: center;
 	padding: 10px;
+    font-weight: bold;
 }
 .reminder{
 	color: red;
@@ -77,3 +78,7 @@ th {
 .modal-header h4{
 	text-align: center;
 }
+.nano { background: #bba;  height: 670px; }
+.nano .nano-content { padding: 10px; }
+.nano .nano-pane   { background: #888; }
+.nano .nano-slider { background: #111; }

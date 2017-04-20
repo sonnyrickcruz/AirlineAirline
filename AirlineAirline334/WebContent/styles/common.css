@@ -103,10 +103,35 @@ body{
   	background-color: #efefef;
   	text-align: center;
 }
-
+#wrongInfo{
+	color: red;
+	text-align: center;
+}
 /* SIDEBAR */
 #sidebar{
-	border: solid red;
+	
+}
+#bookingSummary{
+	text-align: center;
+    font-weight: bold;
+}
+#solidLine{
+	border: solid;
+}
+#airplaneIcon{
+    height: 40px;
+    width: 40px;
+   	margin: 8.5px 13px;
+}
+.airport-code{
+	font-size: 40px;
+	color: blue;
+}
+.airport-code-meaning{
+	margin-top: -10px;
+}
+.text-center{
+	text-align: center;
 }
 /* BOOKING STEPS*/
 #bookingSteps{
@@ -131,3 +156,11 @@ body{
 .shown {
 	display: block;
 }
+/* NANO SCROLLER */
+.nano { 
+	background: #bcb8b8 !important;  
+	height: 670px; 
+}
+.nano .nano-content { padding: 10px; }
+.nano .nano-pane   { background: #888; }
+.nano .nano-slider { background: #111; }

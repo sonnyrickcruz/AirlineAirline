@@ -8,15 +8,8 @@
 
 		<div class="container-fluid">
 			<div class="row">
-				<nav class="col-sm-2" id="myScrollspy">
-					<ul class="nav nav-pills nav-stacked" data-spy="affix"
-						data-offset-top="205">
-						<li><a href="#mealTab">Meal</a></li>
-						<li><a href="#baggageTab">Baggage</a></li>
-						<li><a href="#insuranceTab">Insurance</a></li>
-					</ul>
-				</nav>
-				<div class="col-sm-10">
+				<div class="col-md-1"></div>
+				<div class="col-md-10">
 					<div id="mealTab" class="container-fluid">
 						<div>
 							<div class="col-md-10">
@@ -39,11 +32,10 @@
 										<img id="passengerMeal${ counter.index }" data-toggle="modal"
 											data-target="#myModal" src="./images/meals/no-food-yet.jpg"
 											class="img-thumbnail mealFrame" alt="None"> <input
-											type="hidden" value="0" /> <b>
-											<p id="passengerMealName${ counter.index }">
-												<label class="reminder">*Click the image to add.</label>
-											</p>
-										</b>
+											type="hidden" value="0" />
+										<p id="passengerMealName${ counter.index }">
+											<label class="reminder">*Click the image to add.</label>
+										</p>
 									</div>
 								</div>
 							</div>

@@ -53,8 +53,10 @@
 									  	<div class="form-group">
 									    	<label for="pwd">Password</label>
 									    	<input type="password" class="form-control" id="password" name="password">
+									    	
 									  	</div>
-									  	<p class="errorMessage"><i></i></p>
+									  	<!-- <p class="errorMessage"><i></i></p>-->
+									  	<p id="wrongInfo"></p>
 									  	<button id="loginSubmitButton" type="submit" class="btn btn-success btn-block">Submit</button>
 									</form>
 								</div>
