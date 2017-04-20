@@ -14,8 +14,9 @@ import com.google.gson.Gson;
 
 public class SearchFlightsAction extends BaseAction {
 	private Logger log = Logger.getLogger(this.getClass());
-	List<RouteBean> routeList;
-	List<String> originList;
+	private List<RouteBean> routeList;
+	private List<String> originList;
+	private String route;
 	private String message;
 	private String action;
 	private String term;
@@ -61,16 +62,10 @@ public class SearchFlightsAction extends BaseAction {
 		SearchFlightsManager searchFlightsManager = new SearchFlightsManager();
 		try {
 			if (action.equals("searchOrigin")) {
-				// originList =
-				// searchFlightsManager.processSearchOrginBySearchTerm(term);
-				// message =
-				// gson.toJson(searchFlightsManager.processSearchOrginBySearchTerm(term));
 				message = gson.toJson(searchFlightsManager.processSearchOrginBySearchTerm(term));
-				// System.out.println(jsonString);
 			} else if (action.equals("searchDestination")) {
 				message = gson.toJson(searchFlightsManager.processDestinationBySearchTermOrigin(term, origin));
 			}
-			// jsonObject.add("origins", gson.toJsonTree(originList));
 		} catch (BusinessException | SystemException | ConnectionException e) {
 			result = error;
 			errorMessage = e.getMessage();
@@ -98,15 +93,18 @@ public class SearchFlightsAction extends BaseAction {
 
 		try {
 			SearchFlightsManager searchFlightsManager = new SearchFlightsManager();
+			Gson gson = new Gson();
 			TicketBean ticket = (TicketBean) session.get("ticket");
-
+			RouteBean routeBean;
 			if (ticket == null) {
 				ticket = searchFlightsManager.processTicket();
 				session.put("ticket", ticket);
 			}
-
-			ticket.getFlight().setRoute((searchFlightsManager.processRouteInformationByOriginDestination(searchOrigin,
-					searchDestination, noOfPax)));
+			if (route != null) {
+				routeBean = gson.fromJson(route, RouteBean.class);
+				routeBean.setPax(noOfPax);
+				ticket.getFlight().setRoute(routeBean);
+			}
 			ticket.getFlight().setDepartureDate(searchDepartureDate);
 
 			session.put("ticket", ticket);
@@ -198,6 +196,14 @@ public class SearchFlightsAction extends BaseAction {
 
 	public void setOrigin(String origin) {
 		this.origin = origin;
+	}
+
+	public String getRoute() {
+		return route;
+	}
+
+	public void setRoute(String route) {
+		this.route = route;
 	}
 
 }

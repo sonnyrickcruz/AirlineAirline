@@ -17,20 +17,36 @@ $(document).ready(function(){
 	});
 	$(document).on("blur", "#searchOrigin", function(){
 		origin = $(this).val();
-		var exists = $.inArray(origin,autocompleteList);
+		var keys = $.map(originList, function(element,index) {return index});
+		var exists = $.inArray(origin,keys);
 		if(exists < 0) {
+			origin = "";
 			$(this).val("");
-			$("#searchDestination").val("");
-			//$(this).select();
 		}
 	});
 	$(document).on("blur", "#searchDestination", function(){
-		var destination = $(this).val();
-		var exists = $.inArray(destination,autocompleteList);
+		destination = $(this).val();
+		var keys = $.map(destinationList, function(element,index) {return index});
+		var exists = $.inArray(destination,keys);
 		if(exists < 0) {
+			destination = "";
 			$(this).val("");
-			$("#searchOrigin").select();
 		} 
+	});
+	$(document).on("click", "#searchFlight", function() {
+		if (origin != null && origin.length > 0 && destination != null && origin.length > 0) {
+			var originString;
+			var destinationString;
+			$.each(routes, function(key, value) {
+				originString = "(" + value.origin.airportId + ") " + value.origin.location;
+				destinationString = "(" + value.destination.airportId + ") " + value.destination.location;
+				if (originString == origin && destinationString == destination) {
+					$("#route").val(JSON.stringify(value));
+					alert(JSON.stringify(value));
+					return;
+				}
+			});
+		}
 	});
 });
 
@@ -39,11 +55,16 @@ function setAutoCompleteOrigin (){
 	$("#searchOrigin").autocomplete({
 		source: function(request, response) {
 			var term = request.term.toLowerCase();
-			var keys = $.map(originList, function(element,index) {return index});
 			var result = [];
+			var keys;
+			if (destination != null && destination.length > 0) {
+				keys = destinationList[destination];
+			} else {
+				keys = $.map(originList, function(element,index) {return index});
+			}
 			$.each(keys, function(key, value) {
-				var isInString = (value.toLowerCase()).replace(/[_\W]+/g, "").search((term.toLowerCase()).replace(/[_\W]+/g, ""));
-				if (isInString > 0) {
+				var isInString = removeSymbols(value).search(removeSymbols(term));
+				if (isInString >= 0) {
 					result.push(value);
 				}
 			});
@@ -58,28 +79,20 @@ function setAutoCompleteDestination(){
 		source: function(request, response) {
 			var term = request.term.toLowerCase();
 			var result = [];
-			var resultList = []
-			var option;
-			var originVal;
-			$.each(routes, function(key, value) {
-				originVal = "(" + value.origin.airportId + ") " + value.origin.location
-				if (originVal == origin) {
-					option = "(" + value.destination.airportId + ") " + value.destination.location
-					var str = option.toLowerCase(); 
-					var isInString = str.search(term);
-					if (isInString > 0 && jQuery.inArray(option, resultList) == -1) {
-						result.push({
-							label: option,
-							value: option
-						})
-						resultList.push(option);
-						autocompleteList = resultList;
-					}
+			var keys;
+			if (origin != null && origin.length > 0) {
+				keys = originList[origin];
+			} else {
+				keys = $.map(destinationList, function(element,index) {return index});
+			}
+			$.each(keys, function(key, value) {
+				var isInString = removeSymbols(value).search(removeSymbols(term));
+				if (isInString >= 0) {
+					result.push(value);
 				}
 			});
-			resultList = []
 			response(result);
-		},minLength:0
+	    },minLength:0
 	}).bind('focus', function(){ $(this).autocomplete("search"); } );
 }
 
@@ -110,7 +123,7 @@ function initOrigins() {
 		if (originList[originKey] != null) {
 			originList[originKey].push(destinationVal);
 		} else {
-			originList[originKey] = [destinationVal]
+			originList[originKey] = [destinationVal];
 		}
 	});
 }
@@ -124,7 +137,7 @@ function initDestinations() {
 		if (destinationList[destinationKey] != null) {
 			destinationList[destinationKey].push(originVal);
 		} else {
-			destinationList[destinationKey] = [originVal]
+			destinationList[destinationKey] = [originVal];
 		}
 	});
 }

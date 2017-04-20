@@ -5,6 +5,7 @@
 <s:set var="paxSession" value="%{#session.ticket.flight.route.pax}"/>
 <div>
 	<form action="search-flights-submit" method="POST">
+		<input type="hidden" id="route" name="route">
 	  	<div class="form-group">
 		    <label for="origin"> Origin: </label>
 		    <input type="text" class="form-control" id="searchOrigin" name="searchOrigin" value="${originSession}">
@@ -31,6 +32,6 @@
 				</s:iterator>
 		    </select>
 	    </div>
-	 	<button type="submit" class="btn btn-default"> Search Flights </button>
+	 	<button type="submit" id="searchFlight" class="btn btn-default"> Search for Flights </button>
 	</form>
 </div>
