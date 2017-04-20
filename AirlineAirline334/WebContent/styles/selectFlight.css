@@ -16,3 +16,11 @@
 	width: 900px;
 	margin: 0 auto;
 }
+
+#flightsTbl td {
+	width: 100px;
+}
+
+#flightsTbl tbody tr {
+	cursor: pointer;
+}

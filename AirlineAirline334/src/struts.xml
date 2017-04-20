@@ -18,20 +18,10 @@
             	</interceptor-ref>
           	</interceptor-stack>
 		</interceptors>
-
-		<action name="sample" class="com.airline.action.TemplateAction"
+		
+		<action name="dashboard" class="com.airline.action.SelectFlightAction"
 			method="execute">
-			<interceptor-ref name="defaultStack"/>
-			<interceptor-ref name="templateInterceptor"/>
-			<result name="input" type="tiles">sample.page</result>
-			<result name="error" type="tiles">error.page</result>
-		</action>
-
-		<action name="sampleAction" class="com.airline.action.TemplateAction"
-			method="executeAction">
-			<interceptor-ref name="defaultStack"/>
-			<interceptor-ref name="templateInterceptor"/>
-			<result name="input" type="tiles">sample.page</result>
+			<result name="input" type="tiles">dashboard.page</result>
 			<result name="error" type="tiles">error.page</result>
 		</action>
 		
@@ -104,6 +94,11 @@
 		<action name="select-flight-snippet" class="com.airline.action.SelectFlightAction"
 			method="executeSnippet">
 			<result name="success">/pages/snippets/selectFlightSnippet.jsp</result>
+		</action>
+		
+		<action name="select-flight-submit" class="com.airline.action.SelectFlightAction"
+			method="executeSubmitAction">
+			<result name="success" type="redirectAction">add-ons</result>
 		</action>
 		
 		<action name="add-ons" class="com.airline.action.AddonsAction"

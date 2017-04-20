@@ -43,4 +43,22 @@ public class SelectFlightsManager {
 		log.debug("end flightListSize: " + flightList.size());
 		return flightList;
 	}
+	
+	public FlightBean retrieveFlightById(String id) throws ConnectionException, SystemException, BusinessException {
+		log.debug("START - retrieveFlightById id: " + id);
+		
+		FlightBean flight = null;
+		SelectFlightDao selectFlightDao = new SelectFlightDao();
+		try {
+			flight = selectFlightDao.getFlightById(id);
+		} catch (SystemException | ConnectionException e) {
+			throw e;
+		} catch (Exception e) {
+			log.error("There was an unknown error while processing flight. " + e);
+			throw new BusinessException(e);
+		}
+		
+		log.debug("END - retrieveFlightById");
+		return flight;
+	}
 }

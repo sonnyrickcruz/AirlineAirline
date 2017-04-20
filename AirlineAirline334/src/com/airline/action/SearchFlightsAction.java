@@ -7,6 +7,7 @@ import com.airline.bean.TicketBean;
 import com.airline.exception.BusinessException;
 import com.airline.exception.ConnectionException;
 import com.airline.exception.SystemException;
+import com.airline.factory.OriginDestination;
 import com.airline.manager.SearchFlightsManager;
 import com.google.gson.Gson;
 
@@ -89,15 +90,16 @@ public class SearchFlightsAction extends BaseAction {
 
 		try {
 			SearchFlightsManager searchFlightsManager = new SearchFlightsManager();
-			Gson gson = new Gson();
+			OriginDestination originDestination = OriginDestination.getInstance();
 			TicketBean ticket = (TicketBean) session.get("ticket");
 			RouteBean routeBean;
 			if (ticket == null) {
 				ticket = searchFlightsManager.processTicket();
 				session.put("ticket", ticket);
 			}
+			log.debug("retrieving route by routeId: " + route);
 			if (route != null) {
-				routeBean = gson.fromJson(route, RouteBean.class);
+				routeBean = originDestination.getRouteById(route);
 				routeBean.setPax(noOfPax);
 				ticket.getFlight().setRoute(routeBean);
 			}

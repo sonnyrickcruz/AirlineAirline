@@ -105,6 +105,7 @@ public class SearchFlightsManager {
 		try {
 			resultList = originDestination.getRoutes();
 		} catch (Exception e) {
+			e.printStackTrace();
 			log.error("There was an unknown error while processing origin list. " + e);
 			throw new BusinessException(e);
 		}

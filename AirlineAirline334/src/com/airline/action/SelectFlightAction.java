@@ -16,7 +16,8 @@ public class SelectFlightAction extends BaseAction {
 	private Logger log = Logger.getLogger(this.getClass());
 	private List<FlightBean> flights;
 	private String departureDate;
-	
+	private String flightId;
+
 	/**
 	 * displays flights available for the selected route and date
 	 * 
@@ -61,27 +62,22 @@ public class SelectFlightAction extends BaseAction {
 	 * 
 	 * @param result
 	 */
-	public String executeAction() {
+	public String executeSubmitAction() {
 		log.debug("start action");
-		String result = input;
+		String result = success;
 
-		// execute Logic
-/*		ManagerTemplate managerTemplate = new ManagerTemplate();
 		try {
-			List<String> list =  managerTemplate.processSampleList("2");
-		} catch (BusinessException e) {
-			errorMessage = ErrorConstants.BUSINESS_EXCEPTION;
-			result = input;
-		} catch (SystemException e) {
-			errorMessage = ErrorConstants.SYSTEM_EXCEPTION;
-			result = error;
-		} catch (ConnectionException e) {
-			errorMessage = ErrorConstants.CONNECTION_EXCEPTION;
-			result = error;
-		} catch (Exception e){
-			errorMessage = ErrorConstants.BUSINESS_EXCEPTION;
-			result = input;
-		}*/
+			SelectFlightsManager selectFlightsManager = new SelectFlightsManager();
+			TicketBean ticket = (TicketBean) session.get("ticket");
+			if (ticket != null) {
+				ticket.setFlight(selectFlightsManager.retrieveFlightById(flightId));
+				log.debug(selectFlightsManager.retrieveFlightById(flightId));
+			}
+			
+			session.put("ticket", ticket);
+		} catch (Exception e) {
+			log.error(e);
+		}
 		
 		log.debug("end action - result: " + result);
 		return result;
@@ -102,6 +98,13 @@ public class SelectFlightAction extends BaseAction {
 	public void setDepartureDate(String departureDate) {
 		this.departureDate = departureDate;
 	}
-	
+
+	public String getFlightId() {
+		return flightId;
+	}
+
+	public void setFlightId(String flightId) {
+		this.flightId = flightId;
+	}
 	
 }

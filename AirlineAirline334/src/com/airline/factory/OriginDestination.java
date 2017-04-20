@@ -1,5 +1,6 @@
 package com.airline.factory;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,6 +20,8 @@ public class OriginDestination {
 	private Logger log = Logger.getLogger(this.getClass());
 	private static OriginDestination instance = new OriginDestination();
 	private List<RouteBean> routeListCache;
+	private SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
+	private Map<String, RouteBean> routeMapCache;
 	private Map<String, List<String>> originMapCache;
 	private Map<String, List<String>> destinationMapCache;
 	private Date lastUpdate;
@@ -29,37 +32,36 @@ public class OriginDestination {
 	public static synchronized OriginDestination getInstance() {
 		return instance;
 	}
-
-	private boolean isEmpty() {
-		if (routeListCache != null && !routeListCache.isEmpty()) {
-			return false;
+	
+	private boolean isAvailable() {
+		boolean isAvailable = false;
+		if (routeListCache != null && !routeListCache.isEmpty() && lastUpdate != null && fmt.format(lastUpdate).equals(fmt.format(new Date()))) {
+			isAvailable = true;
 		}
-		return true;
+		log.debug("is routeCache available: " + isAvailable);
+		return isAvailable;
 	}
-
-	private boolean isUpdated() {
-		if (lastUpdate != null && lastUpdate.equals(new Date())) {
-			return true;
+	
+	private void init() {
+		log.debug("START - init");
+		if (!isAvailable()) {
+			RouteManager routeManager = new RouteManager();
+			try {
+				routeListCache = routeManager.processRoutes();
+				routeMapCache = new HashMap<>();
+				lastUpdate = new Date();
+				for (RouteBean routeBean : routeListCache) {
+					routeMapCache.put(routeBean.getRouteId(), routeBean);
+				}
+			} catch (BusinessException | SystemException | ConnectionException e) {
+				log.error(e);
+			}
 		}
-		return false;
+		log.debug("END - init");
 	}
-
-	private void recreate() {
-		log.debug("start - recreate");
-		RouteManager routeManager = new RouteManager();
-		try {
-			routeListCache = routeManager.processRoutes();
-			lastUpdate = new Date();
-		} catch (BusinessException | SystemException | ConnectionException e) {
-			log.error(e);
-		}
-		log.debug("end - recreate " + routeListCache);
-	}
-
+	
 	private void setOrigins() {
-		if (isEmpty() && !isUpdated()) {
-			recreate();
-		}
+		init();
 		try {
 			originMapCache = new HashMap<>();
 			String originKey;
@@ -82,9 +84,7 @@ public class OriginDestination {
 	}
 
 	private void setDestinations() {
-		if (isEmpty() || !isUpdated()) {
-			recreate();
-		}
+		init();
 		try {
 			destinationMapCache = new HashMap<>();
 			String destinationKey;
@@ -141,10 +141,14 @@ public class OriginDestination {
 	}
 	
 	public List<RouteBean> getRoutes() {
-		if (isEmpty() || !isUpdated()) {
-			recreate();
-		}
-		
+		init();
 		return routeListCache;
 	}
+	
+	
+	public RouteBean getRouteById(String key) {
+		init();
+		return routeMapCache.get(key);
+	}
+	
 }

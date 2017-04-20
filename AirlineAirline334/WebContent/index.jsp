@@ -8,6 +8,6 @@
 <title></title>
 </head>
 <body>
-	<s:action name="sample" namespace="/" executeResult="true"/>
+	<s:action name="dashboard" namespace="/" executeResult="true"/>
 </body>
 </html>

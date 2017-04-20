@@ -20,6 +20,12 @@ $(document).ready(function() {
 		start.setDate(start.getDate() - 1)
 		displayDates();
 	});
+	$(document).on("click", "#flightsTbl tbody tr", function() {
+		var isDisabled = $(this).find('input[type=radio]').prop('disabled');
+		if (!isDisabled) {
+			$(this).find('input[type=radio]').prop('checked', true);
+		}
+	});
 });
 
 function displayFlights() {

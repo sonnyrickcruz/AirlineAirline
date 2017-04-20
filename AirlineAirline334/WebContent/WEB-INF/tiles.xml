@@ -32,6 +32,13 @@
 		<put-attribute name="customJS" value="./scripts/dashboard.js"/>
   	</definition>
   	
+  	<definition name="dashboard.page" extends="baseLayout">
+ 		<put-attribute name="title" value="Airline"/>
+		<put-attribute name="body" value="/pages/dashboard.jsp"/>
+		<put-attribute name="customCSS" value="./styles/dashboard.css"/>
+		<put-attribute name="customJS" value="./scripts/dashboard.js"/>
+  	</definition>
+  	
   	<definition name="addFlights.page" extends="baseLayout">
  		<put-attribute name="title" value="Airline"/>
 		<put-attribute name="body" value="/pages/addFlights.jsp"/>
