@@ -8,6 +8,7 @@ import com.airline.bean.UserBean;
 import com.airline.exception.ConnectionException;
 import com.airline.exception.SystemException;
 import com.airline.manager.LoginManager;
+import com.google.gson.Gson;
 
 /**
  * 
@@ -24,25 +25,52 @@ public class LoginAction extends BaseAction{
 	
 	public String execute(){
 		log.debug("START ACTION");
+		log.debug("Username"+username+password);
 		LoginManager loginManager = new LoginManager();
-		UserBean userInfo = null;{
-			
+		UserBean userInfo = null;
+		Gson gson = new Gson();	
 			try {
 				userInfo = loginManager.retrieveUserInfo(username, password);
 				if(userInfo.getFirstName() != null){
 					session.put("userInfo", userInfo);
-					message = "success";
+					message = gson.toJson("The username or password is invalid. Please try again.");
 				} else{
-					errorMessage = "The username or password is invalid. Please try again.";
-					message="error";
+					//errorMessage = gson.toJson("The username or password is invalid. Please try again.");
+					System.out.println(message);
+
+					message = gson.toJson("The username or password is invalid. Please try again.");
 				}
 			} catch (ConnectionException e) {
 				//redirect to error page
 			} catch (SystemException e) {
 				//redirect to error page
 			}
+		
+		return success;	
+	}
+	
+	public String executeLogin(){
+		log.debug("START ACTION");
+		log.debug("Username"+username+password);
+		LoginManager loginManager = new LoginManager();
+		UserBean userInfo = null;
+		Gson gson = new Gson();	
+		try {
+			userInfo = loginManager.retrieveUserInfo(username, password);
+			if(userInfo.getFirstName() != null){
+				session.put("userInfo", userInfo);
+				message = gson.toJson("success");
+			} else{
+				//errorMessage = gson.toJson("The username or password is invalid. Please try again.");
+				message = gson.toJson("error");
+			}
+		} catch (ConnectionException e) {
+			//redirect to error page
+		} catch (SystemException e) {
+			//redirect to error page
 		}
-		return message;	
+		
+		return success;	
 	}
 	
 	

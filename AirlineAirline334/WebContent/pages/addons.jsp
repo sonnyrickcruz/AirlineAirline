@@ -56,7 +56,7 @@
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title">Modal Header</h4>
+										<h4 class="modal-title">Meal Selection</h4>
 									</div>
 									<div class="modal-body container-fluid">
 										<s:iterator value="%{mealList}" var="meal"
@@ -131,13 +131,13 @@
 							</table>
 						</div>
 						<div id="baggageModal" class="modal fade" role="dialog">
-							<div class="modal-dialog modal-lg">
+							<div class="modal-dialog modal-sm">
 
 								<!-- Modal content-->
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title">Modal Header</h4>
+										<h4 class="modal-title">Baggage Selection</h4>
 									</div>
 									<div class="modal-body container-fluid">
 										<div id="baggageButtonModal" class="btn-group"
@@ -153,8 +153,10 @@
 										</div>
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">Close</button>
+										<div class="footer-message">
+											<h5>Note:</h5>
+											kajskldfjalksjfasjdfljasldfjaksl31%31%31%
+										</div>
 									</div>
 								</div>
 
@@ -207,13 +209,13 @@
 
 					</div>
 					<div id="insuranceModal" class="modal fade" role="dialog">
-						<div class="modal-dialog modal-lg">
+						<div class="modal-dialog modal-sm">
 
 							<!-- Modal content-->
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4 class="modal-title">Modal Header</h4>
+									<h4 class="modal-title">Insurance Selection</h4>
 								</div>
 								<div class="modal-body container-fluid">
 									<div id="insuranceButtonModal" class="btn-group"

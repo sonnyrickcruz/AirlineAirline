@@ -78,6 +78,19 @@ public class SearchFlightsAction extends BaseAction {
 		log.debug("end action");
 		return result;
 	}
+	
+	public String executeGetRouteList() {
+		log.debug("start action");
+		String result = success;
+		Gson gson = new Gson();
+		SearchFlightsManager searchFlightsManager = new SearchFlightsManager();
+		try {
+			message = gson.toJson(searchFlightsManager.processRoutes());
+		} catch (BusinessException | SystemException | ConnectionException e) {
+			log.error(e);
+		}
+		return result;
+	}
 
 	public String executeSubmitAction() {
 		log.debug("start action");

@@ -36,7 +36,6 @@ $(document).ready(function(){
 				$('#passengerInsurance'+counter).children().children('.individualInsurance'+value).addClass('active');
 				counter = counter +1;
 			}
-			console.log(value);
 		}
 		});
 	$(".sample").on('click',function(event) {
@@ -51,30 +50,24 @@ $(document).ready(function(){
 				$('#passengerBaggage'+counter).children().children('.individualBaggage'+value).addClass('active');
 				counter = counter +1;
 			}
-			console.log(value);
 		}
 		});
 	$("#submitAddons").on('click',function(){
-			counter =0;
-			var mealArray = [];
-			var baggageArray = [];
-			var insuranceArray = [];
+			var addOns =[];
+
 			while($('#passengerBaggage'+counter).length != 0){
 				var baggageChoice = $('#passengerBaggage'+counter).children().children('.active').find('input:radio').attr("value");
 				var insuranceChoice = $('#passengerInsurance'+counter).children().children('.active').find('input:radio').attr("value");
 				var mealChoice = $('#passengerMeal'+counter).siblings('input').val();
-				mealArray[counter] = mealChoice;
-				baggageArray[counter] = baggageChoice;
-				insuranceArray[counter] = insuranceChoice;
-				/*console.log("Passenger Meal"+counter+": "+mealChoice);
-				console.log("Passenger Baggage"+counter+": "+baggageChoice);
-				console.log("Passenger Insurance"+counter+": "+insuranceChoice);*/
-				counter++;
+				addOns.push({
+					meal: mealChoice,
+					baggage: baggageChoice,
+					insurance: insuranceChoice
+				})
+				
 			}
-			for (var i = 0; i < mealArray.length; i++) {
-				console.log("Person "+i+": "+mealArray[i]+" "+baggageArray[i]+" "+insuranceArray[i]);
-			}
-			passAddonsInputs(mealArray,baggageArray,insuranceArray);
+			
+			passAddonsInputs(addOns);
 			
 	});
 	
@@ -101,27 +94,26 @@ $(document).ready(function(){
 			counter = counter +1;
 		}
 	}
-	function passAddonsInputs(mealArray,baggageArray,insuranceArray) {
-		console.log("dito ako");
+	function passAddonsInputs(addOns) {
+		console.log(addOns);
+		
 		message = "done";
 		$.ajax({
 			url : 'add-ons',
 			type : 'POST',
 			data : {
-			"mealArray" : mealArray,
-			"baggageArray" : baggageArray,
-			"insuranceArray" : insuranceArray,
+			"addOns" : addOns,
 			"message" : message
-		},
-		traditional: true,
-		async : false,
-		cache : false,
-		success : function(data) {
-			
-		},
-		error : function(data) {
-			alert("Error");
-		}
+			},
+			traditional: true,
+			async : false,
+			cache : false,
+			success : function(data) {
+				
+			},
+			error : function(data) {
+				alert("Error");
+			}
 		});
 	}
 });

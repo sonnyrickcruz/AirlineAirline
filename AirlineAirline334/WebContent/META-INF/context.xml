@@ -12,5 +12,5 @@
         username="root" 
         password=""
         driverClassName="com.mysql.jdbc.Driver"
-        url="jdbc:mysql://localhost/aeropolis_db"/>
+        url="jdbc:mysql://localhost/aeropolis"/>
 </Context>

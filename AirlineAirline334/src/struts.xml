@@ -47,6 +47,12 @@
 			<result name="success" type="tiles">login.page</result>
 			<result name="error" type="tiles">sample.page</result>
 		</action>
+		<action name="LoginActionJson" class="com.airline.action.LoginAction"
+			method="executeLogin">
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/pages/json.jsp</result>
+		</action>
+		
 		<action name="logout" class="com.airline.action.LogOutAction"
 			method="execute">
 			<result name="success" type="tiles">sample.page</result>
@@ -81,6 +87,12 @@
 				<param name="location">select-flight</param>
 			</result>
 			<result name="error" type="tiles">error.page</result>
+		</action>
+		
+		<action name="search-flights-routes" class="com.airline.action.SearchFlightsAction"
+			method="executeGetRouteList">
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/pages/json.jsp</result>
 		</action>
 		
 		<action name="select-flight" class="com.airline.action.SelectFlightAction"

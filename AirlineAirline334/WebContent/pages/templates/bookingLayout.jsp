@@ -14,10 +14,10 @@
 <body>
 	<tiles:insertAttribute name="header"></tiles:insertAttribute>
 	<div class="container-fluid main-container">
-		<div class="col-md-12">
-			<tiles:insertAttribute name="bookingSteps"></tiles:insertAttribute>
-		</div>
+		
 		<div class="col-md-9">
+			<tiles:insertAttribute name="bookingSteps"></tiles:insertAttribute>
+			
 			<tiles:insertAttribute name="body"></tiles:insertAttribute>
 		</div>
 		<div class="col-md-3">

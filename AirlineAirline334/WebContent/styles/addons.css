@@ -61,3 +61,19 @@ th {
 	color: red;
 	font-style: italic;
 }
+
+#insuranceButtonModal{	
+	margin: 0 31%;
+}
+#baggageButtonModal{
+	margin: 0% 14%;
+}
+.footer-message{
+	text-align: left;
+}
+.footer-message h5{
+	font-weight: bold;
+}
+.modal-header h4{
+	text-align: center;
+}

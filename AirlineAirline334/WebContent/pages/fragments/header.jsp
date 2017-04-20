@@ -29,28 +29,39 @@
 					</div>
 				</s:if>
 				<s:else>
-					<button id="loginButton" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					<button id="loginButton" type="button" class="btn btn-primary dropdown-toggle" data-toggle="modal" data-target="#loginModal">
 				      <h5>Log In</h5>
 				    </button>
-				    <div id="loginWrapper" class="dropdown-menu dropdown-menu-right" role="menu">
-				    	<div id="lineColorLogin">
-				    		<h4>
-				    			<span class="glyphicon glyphicon-log-in"></span> Log In
-				    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				    		</h4>
-				    	</div>
-						<form id="loginForm" action="LoginAction" method="post">
-							<div class="form-group">
-						    	<label for="username">Username</label>
-						    	<input type="text" class="form-control" id="username" name="username">
-						  	</div>
-						  	<div class="form-group">
-						    	<label for="pwd">Password</label>
-						    	<input type="password" class="form-control" id="password" name="password">
-						  	</div>
-						  	<p class="errorMessage"><i>${errorMessage}</i></p>
-						  	<button type="submit" class="btn btn-success btn-block">Submit</button>
-						</form>
+					<div id="loginModal" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+						<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header" id="lineColorLogin">
+							   		<h4>
+							   			<span class="glyphicon glyphicon-log-in"></span> Log In
+							   			<button type="button" class="close" data-dismiss="modal">&times;</button>
+							   		</h4>
+								    	
+								</div>
+								<div class="modal-body container-fluid">
+									<form id="loginForm" method="post">
+									<!-- action="LoginAction" method="post" -->
+										<div class="form-group">
+									    	<label for="username">Username</label>
+									    	<input type="text" class="form-control" id="username" name="username">
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="pwd">Password</label>
+									    	<input type="password" class="form-control" id="password" name="password">
+									  	</div>
+									  	<p class="errorMessage"><i></i></p>
+									  	<button id="loginSubmitButton" type="submit" class="btn btn-success btn-block">Submit</button>
+									</form>
+								</div>
+							</div>
+
+						</div>
+						
 					</div>
 				</s:else>
 			</div>
